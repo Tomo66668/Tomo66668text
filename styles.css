@@ -193,6 +193,8 @@ img {
   font-family: "Outfit", "Noto Sans SC", sans-serif;
   line-height: 1.03;
   letter-spacing: -0.04em;
+  text-wrap: balance;
+  word-break: keep-all;
 }
 
 .hero h1 {
@@ -227,6 +229,9 @@ img {
 .pain-grid p {
   color: var(--ink-soft);
   line-height: 1.85;
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .hero-text {
@@ -271,6 +276,8 @@ img {
   font-size: 0.98rem;
   line-height: 1.9;
   font-weight: 700;
+  text-wrap: pretty;
+  word-break: keep-all;
 }
 
 .hero-actions,
@@ -475,6 +482,8 @@ img {
   margin: 10px 0 0;
   font-size: 1.1rem;
   line-height: 1.45;
+  text-wrap: balance;
+  word-break: keep-all;
 }
 
 .metric-text,
@@ -580,6 +589,7 @@ img {
   max-width: 56ch;
   text-wrap: pretty;
   word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .compare-chart {
@@ -644,6 +654,7 @@ img {
   text-wrap: pretty;
   word-break: keep-all;
   max-width: 22ch;
+  overflow-wrap: normal;
 }
 
 .compare-visual {
@@ -704,12 +715,16 @@ img {
   color: var(--ink-soft);
   font-weight: 700;
   font-size: 0.98rem;
+  text-wrap: pretty;
+  word-break: keep-all;
 }
 
 .compare-side strong {
   color: var(--ink);
   font-size: 1.05rem;
   line-height: 1.35;
+  text-wrap: pretty;
+  word-break: keep-all;
 }
 
 .compare-notes span {
@@ -858,6 +873,8 @@ img {
   padding-left: 18px;
   color: var(--ink);
   line-height: 1.7;
+  text-wrap: pretty;
+  word-break: keep-all;
 }
 
 .scene-card li + li {
@@ -1177,6 +1194,10 @@ img {
   max-width: 720px;
 }
 
+.cta-panel h2 {
+  max-width: 14ch;
+}
+
 .cta-panel .section-kicker {
   background: rgba(246, 248, 255, 0.95);
   border-color: rgba(197, 204, 255, 0.95);
@@ -1287,19 +1308,33 @@ img {
   }
 
   .topbar {
+    position: static;
     flex-direction: column;
     align-items: flex-start;
+    gap: 14px;
     border-radius: 28px;
     margin-bottom: 44px;
     padding: 18px 20px;
   }
 
+  .brand {
+    gap: 12px;
+  }
+
+  .brand-logo {
+    height: 32px;
+  }
+
   .brand-line {
     white-space: normal;
+    font-size: 0.92rem;
   }
 
   .nav {
+    width: 100%;
+    justify-content: space-between;
     gap: 12px;
+    font-size: 0.92rem;
   }
 
   .hero h1 {
@@ -1311,16 +1346,37 @@ img {
     white-space: normal;
   }
 
+  .hero {
+    gap: 28px;
+    padding: 0 0 56px;
+  }
+
+  .eyebrow {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
   .hero-title-pill {
     width: 100%;
-    padding: 22px 22px;
+    padding: 18px 18px 20px;
     border-radius: 28px;
+  }
+
+  .hero-text {
+    margin: 20px auto 0;
+    font-size: 0.98rem;
+    line-height: 1.95;
   }
 
   .hero-skill-card {
     min-height: 0;
     padding: 22px 22px 20px;
     border-radius: 24px;
+  }
+
+  .hero-skill-grid {
+    gap: 14px;
+    margin-top: 24px;
   }
 
   .metrics-grid,
@@ -1340,12 +1396,15 @@ img {
     margin: 0 auto;
   }
 
-  .hero-text {
-    margin: 22px auto 0;
-  }
-
   .hero-actions {
     justify-content: center;
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .hero-actions .button,
+  .cta-actions .button {
+    width: 100%;
   }
 
   .hero-showcase {
@@ -1357,12 +1416,60 @@ img {
   }
 
   .compare-chart-head {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    padding: 10px 14px;
+  }
+
+  .compare-row {
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(197, 204, 255, 0.32);
+  }
+
+  .compare-row:last-child {
+    border-bottom: none;
+  }
+
+  .compare-meta-center {
+    order: 1;
+  }
+
+  .compare-side-left {
+    order: 2;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .compare-visual-left {
+    order: 3;
+    justify-content: flex-start;
+  }
+
+  .compare-side-right {
+    order: 4;
+  }
+
+  .compare-visual-right {
+    order: 5;
   }
 
   .compare-side span,
   .compare-side strong {
-    font-size: 1rem;
+    font-size: 0.98rem;
+  }
+
+  .compare-meta strong {
+    font-size: 1.08rem;
+  }
+
+  .compare-meta p {
+    max-width: none;
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .compare-visual {
+    height: 24px;
   }
 
   .token-grid {
@@ -1385,6 +1492,21 @@ img {
   .scene-gallery-media img,
   .scene-gallery-gov img {
     max-height: none;
+  }
+
+  .scene-showcase,
+  .pain-compare,
+  .skill-panel,
+  .token-note,
+  .cta-panel {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .process-card,
+  .scene-card,
+  .value-card {
+    padding: 22px;
   }
 
   .cta-actions {
